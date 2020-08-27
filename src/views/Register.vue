@@ -1,3 +1,3 @@
 <template>
-  <div>注册页面</div>
+  <div><MyHeader>注册</MyHeader></div>
 </template>

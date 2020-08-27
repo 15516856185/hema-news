@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import User from '../views/User.vue'
+import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/user', component: User },
+  { path: '/login', component: Login },
   { path: '/register', component: Register }
 ]
 
