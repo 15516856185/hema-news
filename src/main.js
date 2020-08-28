@@ -7,10 +7,11 @@ import Vant from 'vant'
 import 'vant/lib/index.css'
 import 'amfe-flexible'
 import MyHeader from './compoents/MyHeader.vue'
+import mylogo from './compoents/MyLogo.vue'
 Vue.use(Vant)
 Vue.config.productionTip = false
 Vue.component('MyHeader', MyHeader)
-
+Vue.component('Mylogo', mylogo)
 new Vue({
   router,
   render: h => h(App)
