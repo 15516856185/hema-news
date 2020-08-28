@@ -23,11 +23,11 @@
       提交
     </van-button>
   </div>
+  <p class="p">如果没有账号，点击<router-link to='/register' class="regi">注册</router-link></p>
 </van-form>
     </div>
 </template>
 <script>
-import axios from 'axios'
 export default {
   data () {
     return {
@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     async login () {
-      const res = await axios.post('http://127.0.0.1:3000/login', {
+      const res = await this.$axios.post('/login', {
         username: this.username,
         password: this.password
       })
@@ -62,3 +62,13 @@ export default {
   }
 }
 </script>
+<style lang="less">
+  .p {
+    margin: 20px;
+    float: right;
+    font-size: 14px;
+    .regi {
+      color: blue;
+    }
+  }
+</style>

@@ -8,6 +8,9 @@ import 'vant/lib/index.css'
 import 'amfe-flexible'
 import MyHeader from './compoents/MyHeader.vue'
 import mylogo from './compoents/MyLogo.vue'
+import axios from 'axios'
+Vue.prototype.$axios = axios
+axios.defaults.baseURL = 'http://localhost:3000'
 Vue.use(Vant)
 Vue.config.productionTip = false
 Vue.component('MyHeader', MyHeader)
