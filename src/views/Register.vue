@@ -64,7 +64,15 @@ export default {
       const { statusCode, message } = res.data
       if (statusCode === 200) {
         this.$toast.success(message)
-        this.$router.push('/login')
+        console.log(this.$router)
+        // this.$router.push(`/login?username=${this.username}&password=${this.password}`)
+        this.$router.push({
+          name: 'login',
+          params: {
+            username: this.username,
+            password: this.password
+          }
+        })
       } else {
         this.$toast.fail(message)
       }
@@ -72,3 +80,13 @@ export default {
   }
 }
 </script>
+<style lang="less" scoped>
+  .p {
+    margin: 20px;
+    float: right;
+    font-size: 14px;
+    .regi {
+      color: blue;
+    }
+  }
+</style>

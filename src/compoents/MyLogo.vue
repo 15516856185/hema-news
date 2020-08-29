@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .mylogo {
     padding: 30px 0;
     text-align: center;
