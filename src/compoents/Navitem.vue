@@ -1,7 +1,7 @@
 <template>
   <div class="box" @click='clickFn'>
       <div class="title"><slot></slot></div>
-      <div class="conten"><slot name='conten'></slot></div>
+      <div class="conten" ><slot name='conten'></slot></div>
       <div class="icon">
           <span class="iconfont iconjiantou1"></span>
       </div>
@@ -15,6 +15,7 @@ export default {
       if (this.to) {
         this.$router.push(this.to)
       }
+      this.$emit('amend')
     }
   },
   props: {

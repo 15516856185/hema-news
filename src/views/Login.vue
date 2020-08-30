@@ -58,10 +58,11 @@ export default {
       })
       const { statusCode, message, data } = res.data
       if (statusCode === 200) {
+        // this.$toast.success('登录成功')
         this.$toast.success(message)
-        this.$router.push('/user')
         localStorage.setItem('token', data.token)
         localStorage.setItem('id', data.user.id)
+        this.$router.push('/user')
       } else {
         this.$toast.fail('登录失败')
       }
