@@ -56,6 +56,7 @@ export default {
         username: this.username,
         password: this.password
       })
+      console.log(res)
       const { statusCode, message, data } = res.data
       if (statusCode === 200) {
         // this.$toast.success('登录成功')
