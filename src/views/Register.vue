@@ -45,7 +45,7 @@ export default {
         ],
         password: [
           { required: true, message: '请输入注册密码', trigger: 'onChange' },
-          { pattern: /^\d{3,9}$/, message: '用户名长度为5-11位数字', trigger: 'onChange' }
+          { pattern: /^\d{3,9}$/, message: '密码长度为5-11位数字', trigger: 'onChange' }
         ],
         nickname: [
           { required: true, message: '请输入注册昵称', trigger: 'onChange' },

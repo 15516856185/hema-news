@@ -6,7 +6,7 @@
       </div>
       <div class="info">
         <div class="name">
-          <span v-if='user.grnder === 1' class="iconfont iconxingbienan"></span>
+          <span v-if='user.gender === 1' class="iconfont iconxingbienan"></span>
           <span v-else class="iconfont iconxingbienv"></span>
           <span>{{user.nickname}}</span>
         </div>
@@ -18,11 +18,11 @@
         <span class="iconfont iconjiantou1"></span>
       </div>
     </div>
-    <navitem to='/myfloow'>
+    <navitem to='/myfollow'>
         <template >我的关注</template>
         <template #conten>关注的用户</template>
     </navitem>
-    <navitem>
+    <navitem to='/comment'>
          <template>我的跟帖</template>
         <template #conten>跟帖/回复</template>
     </navitem>
