@@ -5,6 +5,13 @@ import router from '../router'
 Vue.prototype.$axios = axios
 axios.defaults.baseURL = 'http://localhost:3000'
 Vue.prototype.$base = 'http://localhost:3000'
+Vue.prototype.$url = function (url) {
+  if (url.startsWith('http')) {
+    return url
+  } else {
+    return 'http://localhost:3000' + url
+  }
+}
 
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {

@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
-import User from '../views/User.vue'
-import Edit from '../views/Edit.vue'
-import myfollow from '../views/MyFollow.vue'
-import photo from '../views/photo.vue'
-import comment from '../views/MyComment.vue'
+import Login from '../views/user/Login.vue'
+import Register from '../views/user/Register.vue'
+import User from '../views/user/User.vue'
+import Edit from '../views/user/Edit.vue'
+import myfollow from '../views/user/MyFollow.vue'
+import photo from '../views/user/photo.vue'
+import comment from '../views/user/MyComment.vue'
+import mystar from '../views/user/mystar.vue'
+import index from '../views/index/index.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -16,7 +18,9 @@ const routes = [
   { path: '/edit', component: Edit, name: 'edit' },
   { path: '/myfollow', component: myfollow, name: 'myfollow' },
   { path: '/photo', component: photo, name: 'photo' },
-  { path: '/comment', component: comment, name: 'comment' }
+  { path: '/comment', component: comment, name: 'comment' },
+  { path: '/mystar', component: mystar, name: 'mystar' },
+  { path: '/', component: index, name: 'index' }
 ]
 
 const router = new VueRouter({
@@ -34,7 +38,7 @@ router.beforeEach(function (to, from, next) {
   //   next()
   // }
   const token = localStorage.getItem('token')
-  const arr = ['user', 'edit', 'myfollow', 'comment']
+  const arr = ['user', 'edit', 'myfollow', 'comment', 'mystar']
   if (!arr.includes(to.name) || token) {
     next()
   } else {

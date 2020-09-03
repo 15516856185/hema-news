@@ -1,7 +1,14 @@
 <template>
   <div class="mycomment">
       <MyHeader>我的跟帖</MyHeader>
-      <div class="list" v-for='item in list' :key = 'item.id'>
+      <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+      <van-list
+  v-model="loading"
+  :finished="finished"
+  finished-text="没有更多了"
+  :immediate-check="false"
+  @load="onLoad"
+><div class="list" v-for='item in list' :key = 'item.id'>
          <div class="item">
             <div class="time">{{item.create_date|time('YYYY-MM-DD hh:mm')}}</div>
             <div class="comment" v-if='item.parent'>
@@ -15,6 +22,8 @@
           </div>
          </div>
       </div>
+      </van-list>
+      </van-pull-refresh>
   </div>
 </template>
 
@@ -22,18 +31,51 @@
 export default {
   data () {
     return {
-      list: []
+      list: [],
+      loading: false,
+      finished: false,
+      pageIndex: 1,
+      pageSize: 6,
+      refreshing: false
     }
   },
   methods: {
     async add () {
-      const res = await this.$axios.get('/user_comments')
-      console.log(res)
+      const res = await this.$axios.get('/user_comments', {
+        params: {
+          pageIndex: this.pageIndex,
+          pageSize: this.pageSize
+        }
+      })
+      // console.log(res)
       const { statusCode, data } = res.data
       if (statusCode === 200) {
-        this.list = data
-        console.log(this.list)
+        this.list = [...this.list, ...data]
+        // console.log(this.list)
+        // console.log(data)
+        this.loading = false
+        if (data.length < this.pageSize) {
+          this.finished = true
+        }
+        this.refreshing = false
       }
+    },
+    onLoad () {
+      // 异步更新数据
+      // setTimeout 仅做示例，真实场景中一般为 ajax 请求
+      this.pageIndex++
+      setTimeout(() => {
+        this.add()
+      }, 1000)
+    },
+    onRefresh () {
+      setTimeout(() => {
+        this.list = []
+        this.pageIndex = 1
+        this.loading = true
+        this.finished = false
+        this.add()
+      }, 1000)
     }
   },
   created () {
